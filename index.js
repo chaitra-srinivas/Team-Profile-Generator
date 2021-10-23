@@ -7,6 +7,7 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
+const Employee = require("./lib/Employee");
 
 const teamMembers = [];
 
@@ -34,10 +35,14 @@ const getManagerDetails = () => {
         message: "Enter Manager's Office Number:",
       },
     ])
-    .then((teamManager) => {
-      const Manager = new Manager(teamManager.id, teamManager.name, teamManager.email, teamManager.officeNumber);
-      teamMembers.push(Manager);
-      console.log(Manager);
+    .then((managerDetails) => {
+      const manager = new Manager(
+        managerDetails.id,
+        managerDetails.name,
+        managerDetails.email,
+        managerDetails.officeNumber
+      );
+      teamMembers.push(manager);
     })
     .catch((err) => console.log(err));
 };
@@ -49,7 +54,7 @@ const getEmployeeDetails = () => {
         type: "list",
         name: "role",
         message: "Please choose your employee's role:",
-        choices: ['Engineer','Intern'],
+        choices: ["Engineer", "Intern"],
       },
       {
         type: "input",
@@ -69,28 +74,51 @@ const getEmployeeDetails = () => {
       {
         type: "input",
         name: "github",
-        when: (input) => input.role === 'Engineer',
+        when: (input) => input.role === "Engineer",
         message: "Enter Engineer's GitHub profile:",
       },
       {
         type: "input",
         name: "school",
-        when: (input) => input.role === 'Intern',
+        when: (input) => input.role === "Intern",
         message: "Enter Inter's School",
       },
+      {
+        type: "confirm",
+        name: "addMoreEmployees",
+        message: "Would you like to add more team members?",
+        default: false,
+      },
     ])
-    .then((teamEmployee) => {
-      switch (teamEmployee.role){
-        case 'Engineer':
-          const engineer = new Engineer(teamEmployee.id, teamEmployee.name, teamEmployee.email, teamEmployee.github);
+    .then((employeeDetails) => {
+      let { id, name, email, role, github, school, addMoreEmployees } =
+        employeeDetails;
+
+      switch (role) {
+        case "Engineer":
+          const engineer = new Engineer(id, name, email, github);
           teamMembers.push(engineer);
           break;
-          case 'Intern':
-            const intern = new Intern(teamEmployee.id, teamEmployee.name, teamEmployee.email, teamEmployee.school);
-            teamMembers.push(intern);
-            break;
+        case "Intern":
+          const intern = new Intern(id, name, email, school);
+          teamMembers.push(intern);
+          break;
       }
-
+     
+      if (addMoreEmployees) {
+        return getEmployeeDetails(teamMembers);
+      } else {
+        return teamMembers;
+      }
     })
     .catch((err) => console.log(err));
 };
+
+getManagerDetails()
+  .then(getEmployeeDetails)
+  .then((teamProfile) => {
+    return console.log(teamProfile);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
