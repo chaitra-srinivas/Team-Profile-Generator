@@ -104,7 +104,7 @@ const getEmployeeDetails = () => {
           teamMembers.push(intern);
           break;
       }
-     
+
       if (addMoreEmployees) {
         return getEmployeeDetails(teamMembers);
       } else {
