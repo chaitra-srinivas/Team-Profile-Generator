@@ -1,57 +1,77 @@
-function generateManagerCard() {
+function generateEmployeeCards(employees) {
+ 
+    const employeeCards = employees.map((employee) => {
+    switch (employee.getRole()) {
+      case "Manager":
+        return generateManagerCard(employee);
+   
+      case "Engineer":
+       return generateEngineerCard(employee);
+      
+      case "Intern":
+       return generateInternCard(employee);
+    
+      default:
+        throw new Error("Unknown role");
+    }
+  });
+  return employeeCards.join('');
+}
+
+function generateManagerCard(manager) {
   return ` <div class="col">
     <div class="card" id="manager-card" style="width: 18rem">
         <div class="card-header bg-success text-light text-center">
-            <h5>Calvin</h5>
+            <h5>${manager.name}</h5>
             <span class="material-icons">person_outline </span>Manager
         </div>
 
         <ul class="list-group list-group-flush px-2">
-            <li class="list-group-item px-2 m-2 border">Id: 1</li>
+            <li class="list-group-item px-2 m-2 border">Id: ${manager.id}</li>
             <li class="list-group-item px-2 m-2 border">
-                email: calvin@officemail.com
+                email: ${manager.email}
             </li>
             <li class="list-group-item px-2 m-2 border">
-                Office Number: 223280084
+                Office Number: ${manager.officeNumber}
             </li>
         </ul>
     </div>
 </div>`;
 }
 
-function generateEngineerCard() {
+function generateEngineerCard(engineer) {
   return `<div class="col">
     <div class="card margin-style" id="engineer-card" style="width: 18rem">
         <div class="card-header bg-success text-light text-center">
-            <h5>Dennis</h5>
+            <h5>${engineer.name}</h5>
             <span class="material-icons">engineering</span> Engineer
         </div>
         <ul class="list-group list-group-flush px-2">
-            <li class="list-group-item px-2 m-2 border">Id: 2</li>
+            <li class="list-group-item px-2 m-2 border">Id: ${engineer.id}</li>
             <li class="list-group-item px-2 m-2 border">
-                email: dennis@engmail.com
+                email: ${engineer.email}
             </li>
             <li class="list-group-item px-2 m-2 border">
-                GitHub: dennis-menace
+                GitHub: ${engineer.github}
             </li>
         </ul>
     </div>
 </div>`;
 }
 
-function generateInternCard() {
+function generateInternCard(intern) {
   return `<div class="col">
     <div class="card margin-style" id="intern-card" style="width: 18rem">
         <div class="card-header bg-success text-light text-center">
-            <h5>Garfield</h5>
+            <h5>${intern.getName()}</h5>
             <span class="material-icons">school</span> Intern
         </div>
         <ul class="list-group list-group-flush px-2">
-            <li class="list-group-item px-2 m-2 border">Id: 3</li>
+            <li class="list-group-item px-2 m-2 border">Id: ${intern.getId()}</li>
             <li class="list-group-item px-2 m-2 border">
-                email: garfield@rmit.com
+                email: ${intern.getEmail()}
             </li>
-            <li class="list-group-item px-2 m-2 border">School: RMIT</li>
+            <li class="list-group-item px-2 m-2 border">School: ${intern.getSchool()}</li>
         </ul>
     </div>
 </div>`;
@@ -60,7 +80,6 @@ function generateInternCard() {
 const generateHTML = (data) => {
   return `<!DOCTYPE html>
     <html lang="en">
-    
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,7 +99,7 @@ const generateHTML = (data) => {
         <div class="container">
             <div class="row mt-4 justify-content-center">
             <!--Employee Cards-->
-                
+            ${generateEmployeeCards(data)}
             </div>
         </div>
     </body>

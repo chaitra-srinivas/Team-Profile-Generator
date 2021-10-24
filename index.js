@@ -2,6 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+const generateHTML = require("./src/generateHTML");
 // team
 
 const Engineer = require("./lib/Engineer");
@@ -117,7 +118,9 @@ const getEmployeeDetails = () => {
 getManagerDetails()
   .then(getEmployeeDetails)
   .then((teamProfile) => {
-    return console.log(teamProfile);
+    fs.writeFileSync("./dist/index.html", generateHTML(teamProfile));
+    console.log("Successfully generated team profile!");
+    //return console.log(teamProfile);
   })
   .catch((err) => {
     console.log(err);
