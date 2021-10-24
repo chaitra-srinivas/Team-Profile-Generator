@@ -1,0 +1,19 @@
+* {
+box-sizing: border-box;
+}
+
+.nav-style{
+    min-height: 100px;
+    font-weight: bolder;
+    color: #fff;
+    background-color: rgb(121, 147, 235);
+    text-align: center;
+    margin: 2px;
+    padding: 20px;
+}
+
+.header-style{
+    background-color: rgb(11, 27, 75);
+    color: #fff;
+}
+
