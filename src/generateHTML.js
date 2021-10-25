@@ -29,7 +29,7 @@ function generateManagerCard(manager) {
         <ul class="list-group list-group-flush px-2">
             <li class="list-group-item px-2 m-2 border">Id: ${manager.id}</li>
             <li class="list-group-item px-2 m-2 border">
-                email: ${manager.email}
+                email: <a href="mailto:${manager.email}">${manager.email}</a>
             </li>
             <li class="list-group-item px-2 m-2 border">
                 Office Number: ${manager.officeNumber}
@@ -49,10 +49,10 @@ function generateEngineerCard(engineer) {
         <ul class="list-group list-group-flush px-2">
             <li class="list-group-item px-2 m-2 border">Id: ${engineer.id}</li>
             <li class="list-group-item px-2 m-2 border">
-                email: ${engineer.email}
+                email: <a href="mailto:${engineer.email}">${engineer.email}</a>
             </li>
             <li class="list-group-item px-2 m-2 border">
-                GitHub: ${engineer.github}
+                GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a>
             </li>
         </ul>
     </div>
@@ -67,11 +67,11 @@ function generateInternCard(intern) {
             <span class="material-icons">school</span> Intern
         </div>
         <ul class="list-group list-group-flush px-2">
-            <li class="list-group-item px-2 m-2 border">Id: ${intern.getId()}</li>
+            <li class="list-group-item px-2 m-2 border">Id: ${intern.id}</li>
             <li class="list-group-item px-2 m-2 border">
-                email: ${intern.getEmail()}
+                email: <a href="mailto:${intern.email}">${intern.email}</a>
             </li>
-            <li class="list-group-item px-2 m-2 border">School: ${intern.getSchool()}</li>
+            <li class="list-group-item px-2 m-2 border">School: ${intern.school}</li>
         </ul>
     </div>
 </div>`;
@@ -97,7 +97,7 @@ const generateHTML = (data) => {
             <span class="material-icons"> groups </span>
         </nav>
         <div class="container">
-            <div class="row mt-4 justify-content-center">
+            <div class="row mt-4 mb-4 justify-content-center">
             <!--Employee Cards-->
             ${generateEmployeeCards(data)}
             </div>
