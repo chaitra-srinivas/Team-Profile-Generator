@@ -20,7 +20,7 @@ function generateEmployeeCards(employees) {
 
 function generateManagerCard(manager) {
   return ` <div class="col">
-    <div class="card" id="manager-card" style="width: 18rem">
+    <div class="card shadow p3 mb5 rounded" id="manager-card" style="width: 18rem">
         <div class="card-header bg-success text-light text-center">
             <h5>${manager.name}</h5>
             <span class="material-icons">person_outline </span>Manager
@@ -41,7 +41,7 @@ function generateManagerCard(manager) {
 
 function generateEngineerCard(engineer) {
   return `<div class="col">
-    <div class="card margin-style" id="engineer-card" style="width: 18rem">
+    <div class="card shadow p3 mb5 rounded" id="engineer-card" style="width: 18rem">
         <div class="card-header bg-success text-light text-center">
             <h5>${engineer.name}</h5>
             <span class="material-icons">engineering</span> Engineer
@@ -61,7 +61,7 @@ function generateEngineerCard(engineer) {
 
 function generateInternCard(intern) {
   return `<div class="col">
-    <div class="card margin-style" id="intern-card" style="width: 18rem">
+    <div class="card shadow p3 mb5 rounded" id="intern-card" style="width: 18rem">
         <div class="card-header bg-success text-light text-center">
             <h5>${intern.getName()}</h5>
             <span class="material-icons">school</span> Intern
