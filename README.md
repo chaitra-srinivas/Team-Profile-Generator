@@ -63,7 +63,7 @@ THEN I exit the application, and the HTML is generated
     ![Team Profile](./assets/Team-profile.png)
     
 
-    ## [Walkthrough video](https://youtu.be/E367cOkah00)
+    ## [Walkthrough video](https://drive.google.com/file/d/1fkisS8hy-I0glSNJSTSRJspFAqRSEwtN/view?usp=sharing)
 
 
     Copyright © 2021 Chaitra Srinivasamurthy 
