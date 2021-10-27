@@ -40,7 +40,6 @@ THEN I exit the application, and the HTML is generated
 - [Acceptance Criteria](#acceptance-criteria)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [Questions](#questions)
 - [Screenshot](#screenshot)
 - [Walkthrough video](#walkthrough-video)
@@ -53,10 +52,7 @@ THEN I exit the application, and the HTML is generated
    
     ## Usage
     To be prompted with questions about the project, from the directory where the project is located, run node index.js from the terminal. Provide all the required details and an index.html file will be generated in the /dist folder of the current working directory.
-   
-    ## Contributing
-    Chaitra 
-    
+
     ## Questions
     For any questions regarding the project please visit my 
     GitHub Profile @ 
